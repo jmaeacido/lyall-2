@@ -1,0 +1,40 @@
+"use client";
+
+import { FormEvent, useEffect, useState } from "react";
+
+const services = [
+  { n:"01", title:"Tree Removal & Takedowns", text:"Safe, controlled removal of hazardous, dead, or unwanted trees, even when access is tight.", image:"https://www-static-nw.husqvarna.com/-/images/aprimo/husqvarna/chainsaws/photos/feature/ce-375647.jpg?format=JPG_PORTRAIT_COVER_MD&v=26858065af6b623d" },
+  { n:"02", title:"Precision Pruning & Trimming", text:"Careful cuts that improve health, structure, shape, sunlight, and views without working against nature.", image:"https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1400&q=88" },
+  { n:"03", title:"Emergency Storm Damage", text:"Fast, responsive clearing and hazard mitigation when Hudson Valley weather leaves trees unstable.", image:"https://images.unsplash.com/photo-1503437313881-503a91226402?auto=format&fit=crop&w=1400&q=88" },
+  { n:"04", title:"Stump Grinding & Land Clearing", text:"A clean, level finish that leaves your yard ready for the next thing you want to grow or build.", image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&q=88" },
+];
+
+export default function Home(){
+  const [menu,setMenu]=useState(false); const [files,setFiles]=useState<File[]>([]); const [status,setStatus]=useState("");
+  useEffect(()=>{const o=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("shown")),{threshold:.12});document.querySelectorAll(".rise").forEach(e=>o.observe(e));return()=>o.disconnect()},[]);
+  async function send(e:FormEvent<HTMLFormElement>){e.preventDefault();setStatus("Sending your request…");const form=e.currentTarget,body=new FormData(form);files.forEach(f=>body.append("photos",f));try{const r=await fetch("/api/quote",{method:"POST",body});if(!r.ok)throw new Error();form.reset();setFiles([]);setStatus("Thanks. Steve received your request and photos and will follow up soon.")}catch{setStatus("Your request could not be sent. Please try again.")}}
+  return <main>
+    <section id="top" className="hero">
+      <nav className="nav wrap"><a href="#top" className="logo"><span>✳</span><b>Steve Lyall</b><small>Tree Care</small></a><button className="menuBtn" onClick={()=>setMenu(!menu)} aria-label="Toggle menu">{menu?"Close":"Menu"}</button><div className={menu?"navlinks open":"navlinks"}><a href="#about">About</a><a href="#services">Services</a><a href="#process">Approach</a><a href="#quote">Contact</a></div><a className="navCta" href="#quote">Free estimate ↗</a></nav>
+      <div className="heroNote">Local knowledge. Careful work.<br/>A property left cleaner than we found it.</div>
+      <div className="heroContent wrap"><p className="tag"><i/> Hudson Valley tree specialists</p><h1>Expert Tree Care.<br/><em>Rooted in the</em><br/>Hudson Valley.</h1><div className="heroBottom"><p>From precision pruning to complex removals, Steve Lyall protects your property, enhances nature, and keeps your property beautiful.</p><a className="button lime" href="#quote">Start your project <span>↗</span></a></div></div>
+      <div className="scroll">Scroll to explore ↓</div>
+    </section>
+
+    <section id="about" className="intro pad wrap">
+      <div className="sideStat rise"><p className="tag dark"><i/> Local tree care</p><strong>20<sup>+</sup></strong><span>Years of trusted<br/>local experience</span></div>
+      <div className="introCopy rise"><h2>Experienced, skilled, and nature focused. <em>Every property gets personal care.</em></h2><p>For years, Steve Lyall has been the go to tree specialist in Woodstock and the surrounding Catskills region. Known for his deep understanding of local arboriculture, safety first approach, and immaculate cleanups, Steve treats every property like his own.</p><div className="pillRow"><span>Fully insured</span><span>Safety first</span><span>Local expertise</span></div><a className="button green" href="#quote">Talk with Steve <span>↗</span></a></div>
+    </section>
+
+    <section className="photoBand"><div className="photoTall rise"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=90" alt="Hudson Valley forest"/><span>Woodstock<br/>New York</span></div><div className="quoteBlock rise"><p>“Steve treats every property like his own, with a clear plan, careful execution, and an immaculate cleanup.”</p><small>The standard on every job</small></div></section>
+
+    <section id="services" className="services pad"><div className="wrap serviceHead rise"><p className="tag"><i/> Core services</p><h2>Work that protects what matters and <em>lets the landscape breathe.</em></h2></div><div className="serviceList wrap">{services.map((s,i)=><article className="service rise" key={s.n}><span className="num">{s.n}</span><div className="thumb"><img src={s.image} alt=""/></div><h3>{s.title}</h3><p>{s.text}</p><a href="#quote" aria-label={`Request ${s.title}`}>↗</a></article>)}</div></section>
+
+    <section id="process" className="process pad"><div className="wrap processGrid"><div className="processTitle rise"><p className="tag"><i/> The process</p><h2>Simple from the first photo to the final cleanup.</h2></div><div className="processSteps">{[["01","Show us the job","Send details and upload a few photos so Steve can understand what is happening."],["02","Walk the property","Steve reviews access, tree health, risk, and the safest way to complete the work."],["03","Complete with care","The work is handled with control, then the property is cleaned before the crew leaves."]].map(x=><div className="pstep rise" key={x[0]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div></div></section>
+
+    <section className="statement"><div className="wrap rise"><p>Serving Woodstock and the surrounding Catskills</p><h2>Safer trees.<br/>Better views.<br/><em>A property you love.</em></h2><a className="button lime" href="#quote">Request an estimate <span>↗</span></a></div></section>
+
+    <section id="quote" className="quote pad"><div className="wrap quoteGrid"><div className="quoteIntro rise"><p className="tag"><i/> Free estimates</p><h2>Send the details.<br/><em>Show us the tree.</em></h2><p>Upload wide shots, the tree base, any visible damage, and nearby buildings or wires. The photos help Steve prepare before the site visit.</p><div className="emergency"><small>Storm damage or immediate hazard</small><b>Request a fast response below</b></div></div><form onSubmit={send} className="form rise"><div className="fields"><label>Name<input name="name" required placeholder="Full name"/></label><label>Phone<input name="phone" required type="tel" placeholder="(845) 000 0000"/></label><label>Email<input name="email" required type="email" placeholder="you@email.com"/></label><label>Property location<input name="location" required placeholder="Town or address"/></label></div><label>Service<select name="service" required defaultValue=""><option value="" disabled>Choose a service</option>{services.map(s=><option key={s.n}>{s.title}</option>)}<option>Not sure yet</option></select></label><label>What is happening?<textarea name="message" required rows={4} placeholder="Describe the tree, concern, access, and anything nearby."/></label><label className="drop"><input type="file" accept="image/*" multiple onChange={e=>setFiles(Array.from(e.target.files||[]).slice(0,6))}/><b>＋ Add job photos</b><span>Up to 6 JPG, PNG, or WEBP images</span>{files.length>0&&<strong>{files.length} photo{files.length>1?"s":""} ready</strong>}</label><button type="submit">Request my free estimate <span>↗</span></button>{status&&<p className="status" role="status">{status}</p>}</form></div></section>
+    <footer className="footer wrap"><a href="#top" className="logo"><span>✳</span><b>Steve Lyall</b><small>Tree Care</small></a><p>Professional, fully insured tree care<br/>in the Hudson Valley.</p><div><a href="#about">About</a><a href="#services">Services</a><a href="#quote">Contact</a></div><small>© 2026 Steve Lyall Tree Care</small></footer>
+  </main>
+}
