@@ -40,3 +40,8 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+# Local invoice preparation
+**/invoice-worklog-draft.md
+**/invoice-worklog-rules.md
+.cursor/rules/invoice-worklog.mdc
