@@ -1,0 +1,621 @@
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lime) var(--deep);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  background: var(--deep);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--deep);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 48px;
+  border: 3px solid var(--deep);
+  border-radius: 999px;
+  background: var(--lime);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e3ff76;
+}
+
+.hero {
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 0;
+}
+
+.heroContent {
+  bottom: clamp(62px, 10vh, 105px);
+}
+
+.hero h1 {
+  font-size: clamp(48px, min(7vw, 11vh), 104px);
+}
+
+.heroNote {
+  top: clamp(150px, 30vh, 285px);
+}
+
+.scroll {
+  bottom: 18px;
+}
+
+.heroBottom p {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.heroBottom .button {
+  padding: 18px 21px;
+  font-size: 14px;
+  gap: 34px;
+}
+
+.photoBand {
+  margin-bottom: 64px;
+}
+
+.form label {
+  font-size: 12px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  font-size: 14px;
+}
+
+.drop b {
+  font-size: 13px;
+}
+
+.drop span,
+.drop strong {
+  font-size: 12px;
+}
+
+.form button {
+  font-size: 15px;
+}
+
+.form .status {
+  font-size: 14px;
+}
+
+.footerLogo {
+  position: relative;
+  display: block;
+  width: 260px;
+  height: 68px;
+  overflow: hidden;
+  align-self: center;
+}
+
+.footerLogo img {
+  position: absolute;
+  top: -27px;
+  left: 0;
+  width: 100%;
+}
+
+.logo small {
+  margin-left: 8px;
+  color: var(--lime);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+
+.footerLogo span {
+  position: absolute;
+  left: 64px;
+  bottom: 2px;
+  color: var(--green);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .17em;
+}
+
+.devCredit {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  margin: 35px 0 0;
+  padding-top: 20px;
+  color: #687369;
+  font-size: 11px;
+}
+
+.devCredit a {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.devCredit a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .heroContent {
+    bottom: 58px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 12vw, 52px);
+  }
+
+  .scroll {
+    right: 15px;
+    bottom: 14px;
+    display: block;
+  }
+
+  .footerLogo {
+    width: 235px;
+    height: 62px;
+  }
+
+  .footerLogo img {
+    top: -24px;
+  }
+
+  .footerLogo span {
+    left: 58px;
+  }
+
+  .devCredit {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: start;
+    margin: -14px 0 0;
+    padding-top: 0;
+  }
+
+  .photoBand {
+    margin-bottom: 36px;
+  }
+
+  .heroBottom p {
+    font-size: 15px;
+  }
+
+  .heroBottom .button {
+    padding: 16px 18px;
+    font-size: 13px;
+  }
+}
+
+/* Fluid layout safeguards */
+.wrap {
+  width: min(1180px, calc(100% - clamp(30px, 5vw, 48px)));
+}
+
+.button,
+.navCta,
+.menuBtn,
+.service > a,
+.form button {
+  min-height: 44px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.pillRow {
+  flex-wrap: wrap;
+}
+
+.heroBottom p,
+.introCopy > p,
+.service p,
+.pstep p,
+.quoteIntro > p,
+.footer p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1200px) {
+  .pad {
+    padding: 100px 0;
+  }
+
+  .nav {
+    padding-inline: 24px;
+  }
+
+  .intro,
+  .serviceHead {
+    grid-template-columns: 210px 1fr;
+    gap: 52px;
+  }
+
+  .processGrid {
+    gap: 64px;
+  }
+
+  .quoteGrid {
+    gap: 6%;
+  }
+
+  .service {
+    grid-template-columns: 50px 110px 1.05fr .95fr 44px;
+    gap: 20px;
+  }
+
+  .thumb {
+    width: 110px;
+    height: 105px;
+  }
+
+  .photoTall {
+    height: 600px;
+  }
+
+  .statement {
+    min-height: min(680px, 90svh);
+  }
+}
+
+@media (max-width: 880px) {
+  .pad {
+    padding: 84px 0;
+  }
+
+  .nav {
+    padding-inline: 20px;
+  }
+
+  .navlinks.open {
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+  }
+
+  .heroContent {
+    bottom: 64px;
+  }
+
+  .hero h1 {
+    font-size: clamp(50px, 9vw, 72px);
+  }
+
+  .heroBottom {
+    gap: 36px;
+  }
+
+  .intro,
+  .serviceHead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .intro > *,
+  .serviceHead > *,
+  .processGrid > *,
+  .quoteGrid > * {
+    min-width: 0;
+  }
+
+  .sideStat {
+    min-height: 180px;
+  }
+
+  .photoBand {
+    gap: 0;
+    padding-inline: 20px;
+  }
+
+  .photoTall {
+    height: min(560px, 70svh);
+  }
+
+  .quoteBlock {
+    min-height: 320px;
+    padding: 42px;
+  }
+
+  .serviceHead {
+    margin-bottom: 48px;
+  }
+
+  .service {
+    min-height: 145px;
+  }
+
+  .processGrid,
+  .quoteGrid {
+    gap: 48px;
+  }
+
+  .statement {
+    min-height: min(650px, 88svh);
+  }
+
+  .statement h2 {
+    font-size: clamp(54px, 10vw, 78px);
+  }
+
+  .form {
+    padding: 32px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+
+  .footer > div {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .footer > small {
+    grid-column: 1 / -1;
+  }
+
+  .devCredit {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    width: calc(100% - 30px);
+  }
+
+  .pad {
+    padding: 70px 0;
+  }
+
+  .nav {
+    padding-inline: 15px;
+  }
+
+  .logo img {
+    max-width: 190px;
+  }
+
+  .logo small {
+    margin-left: 5px;
+    font-size: 8px;
+  }
+
+  .heroContent {
+    bottom: 54px;
+  }
+
+  .hero h1 {
+    margin-block: 18px;
+    font-size: clamp(38px, 12vw, 52px);
+  }
+
+  .heroBottom {
+    gap: 18px;
+  }
+
+  .heroBottom .button {
+    width: 100%;
+  }
+
+  .sideStat {
+    min-height: 145px;
+  }
+
+  .intro,
+  .serviceHead {
+    gap: 24px;
+  }
+
+  .sideStat strong {
+    font-size: 64px;
+  }
+
+  .introCopy h2,
+  .serviceHead h2,
+  .processTitle h2,
+  .quoteIntro h2 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .pillRow {
+    margin-block: 24px;
+  }
+
+  .photoBand {
+    padding: 0;
+  }
+
+  .photoTall {
+    height: min(460px, 65svh);
+  }
+
+  .quoteBlock {
+    min-height: 290px;
+    padding: 28px;
+  }
+
+  .serviceHead {
+    margin-bottom: 36px;
+  }
+
+  .service {
+    min-height: 0;
+    gap: 12px;
+  }
+
+  .service h3 {
+    margin-block: 0;
+    line-height: 1.25;
+  }
+
+  .statement {
+    min-height: min(620px, 88svh);
+    background-position: 58% center;
+  }
+
+  .statement h2 {
+    margin-block: 22px 30px;
+    font-size: clamp(46px, 14vw, 66px);
+  }
+
+  .fields {
+    gap: 0;
+  }
+
+  .form {
+    padding: 26px 20px;
+  }
+
+  .form input,
+  .form select,
+  .form textarea {
+    font-size: 16px;
+  }
+
+  .drop {
+    padding: 20px 14px !important;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer > div,
+  .footer > small,
+  .devCredit {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+  }
+
+  .footer > div {
+    flex-wrap: wrap;
+  }
+
+  .footer > small {
+    margin-top: 12px;
+  }
+
+  .devCredit {
+    margin-top: -10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav {
+    padding-inline: 12px;
+  }
+
+  .logo img {
+    max-width: 160px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .heroBottom p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .quoteBlock,
+  .form {
+    padding-inline: 18px;
+  }
+
+  .service {
+    grid-template-columns: 28px 1fr 38px;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 601px) {
+  .nav {
+    top: 12px;
+    height: 66px;
+  }
+
+  .heroContent {
+    bottom: 48px;
+  }
+
+  .hero h1 {
+    margin-block: 14px;
+    font-size: clamp(42px, min(6vw, 10vh), 64px);
+  }
+
+  .heroBottom p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .heroBottom .button {
+    padding: 14px 17px;
+    font-size: 12px;
+  }
+
+  .heroNote {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 600px) {
+  .heroContent {
+    bottom: 42px;
+  }
+
+  .heroContent > .tag {
+    display: none;
+  }
+
+  .hero h1 {
+    margin-block: 10px 14px;
+    font-size: clamp(34px, 9vh, 42px);
+  }
+
+  .heroBottom {
+    gap: 12px;
+  }
+
+  .heroBottom p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .heroBottom .button {
+    min-height: 40px;
+    padding-block: 11px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .heroContent {
+    bottom: 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 9vh, 40px);
+  }
+
+  .heroBottom {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .scroll {
+    bottom: 8px;
+  }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./hero-tweaks.css";
 
 export const metadata: Metadata = {
   title: "Lyall Property Care LLC | Hudson Valley Tree Specialist",
