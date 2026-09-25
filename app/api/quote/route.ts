@@ -1,5 +1,5 @@
 const CLIENT_EMAIL = "Stevelyall67@gmail.com";
-const FORD_EMAIL = "team@alchemydev.io";
+const FORD_EMAIL = "ford@alchemydev.io";
 const NOTIFY_EMAILS = [CLIENT_EMAIL, FORD_EMAIL] as const;
 
 type QuoteDetails = {
